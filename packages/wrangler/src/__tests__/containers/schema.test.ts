@@ -7,6 +7,14 @@ type WranglerSchema = {
 		ContainerApp: {
 			properties: Record<string, unknown>;
 		};
+		ContainerInstanceGroupConfig: {
+			properties: Record<string, unknown> & {
+				type: {
+					const: string;
+				};
+			};
+			required: string[];
+		};
 		RawConfig: {
 			properties: {
 				build: {
@@ -31,6 +39,15 @@ describe("config schema", () => {
 		expect(schema.definitions.ContainerApp.properties).not.toHaveProperty(
 			"wrangler_ssh"
 		);
+	});
+
+	it("documents the container instance group discriminator", ({ expect }) => {
+		const schema = readSchema();
+		const instanceGroup = schema.definitions.ContainerInstanceGroupConfig;
+
+		expect(instanceGroup.properties.type.const).toBe("instance");
+		expect(instanceGroup.required).toContain("type");
+		expect(instanceGroup.properties).not.toHaveProperty("constraints");
 	});
 
 	it("emits markdownDescription for rich editor hovers", ({ expect }) => {
