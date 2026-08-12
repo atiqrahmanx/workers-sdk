@@ -1,5 +1,13 @@
 # @cloudflare/deploy-helpers
 
+## 0.7.0
+
+### Minor Changes
+
+- [#15152](https://github.com/cloudflare/workers-sdk/pull/15152) [`f0f2054`](https://github.com/cloudflare/workers-sdk/commit/f0f2054a48f5b7536268e8be432148943ba73557) Thanks [@GregBrimble](https://github.com/GregBrimble)! - [private beta]: Updates the `--ignore-defaults` flag to `--ignore-base-config` on `wrangler preview` commands.
+
+  `--ignore-base-config` now only takes effect on Preview creation, rather than on each deployment, since Preview base configuration is now copy-on-create rather than inherit-on-deploy.
+
 ## 0.6.9
 
 ### Patch Changes

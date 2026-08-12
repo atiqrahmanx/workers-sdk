@@ -1,5 +1,25 @@
 # create-cloudflare
 
+## 2.72.0
+
+### Minor Changes
+
+- [#14896](https://github.com/cloudflare/workers-sdk/pull/14896) [`7d4565d`](https://github.com/cloudflare/workers-sdk/commit/7d4565ddf8400f596b2c14c12ba62d7b719f77a4) Thanks [@scottbuscemi](https://github.com/scottbuscemi)! - Make vinext the default Next.js scaffold, keep OpenNext as a variant
+
+  `create-cloudflare --framework=next` now prompts for a Next.js adapter:
+
+  - **vinext** (default / recommended) — scaffolds via `create-vinext-app` (`vinext dev` / `vinext build` / `vinext-cloudflare deploy`)
+  - **opennext** — keeps the previous OpenNext remote template for projects that need standard `next build` output or a capability vinext does not support yet
+
+  Non-interactive usage:
+
+  ```sh
+  npm create cloudflare@latest my-app -- --framework=next --variant=vinext
+  npm create cloudflare@latest my-app -- --framework=next --variant=opennext
+  ```
+
+  `-y` / `--accept-defaults` selects vinext. This aligns C3 with the recommended Next.js-on-Workers path in the Cloudflare docs while preserving an opt-in OpenNext path.
+
 ## 2.71.1
 
 ### Patch Changes
